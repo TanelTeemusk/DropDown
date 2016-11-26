@@ -921,6 +921,21 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 
 	public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 		cell.isSelected = (indexPath as NSIndexPath).row == selectedRowIndex
+
+        if (tableView.responds(to: #selector(setter: UITableView.separatorInset))) {
+
+            tableView.separatorInset = .zero
+        }
+
+        if (tableView.responds(to: #selector(setter: UITableView.layoutMargins))) {
+
+            tableView.layoutMargins = .zero
+        }
+
+        if (cell.responds(to: #selector(setter: UITableViewCell.layoutMargins))) {
+
+            cell.layoutMargins = .zero
+        }
 	}
 
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
